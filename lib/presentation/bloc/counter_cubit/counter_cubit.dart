@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-part 'counter_state.dart';
+part 'counter_state.dart'; //! Indica que este archivo y 'counter_state.dart' son un mismo archivo DIVIDIDO EN VARIAS PARTES
 
 // ! Es como el caso del StateNotifier de Riverpod en la aplicación de los widgets. Cubit<> maneja la clase/estado que pongamos entre <>
 
@@ -31,7 +31,8 @@ class CounterCubit extends Cubit<CounterState> {
 
   void reset() {
     emit(state.copyWith(
-      counter: 0
+      counter: 0,
+      transactionCount: state.transactionCount + 1
     ));
   }
 
