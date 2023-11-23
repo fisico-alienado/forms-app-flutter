@@ -24,11 +24,11 @@ class CounterState {
   }); 
 
   // ! Es una forma de hacer una copia de clases (del CounterState actual en este caso)
-  //! De esta manera podemos mantener la clase (CounterState) inmutable y, cuando se quiera cambiar algo, se hace una copia de ella
+  //! De esta manera podemos mantener la clase (CounterState) INMUTABLE y, cuando se quiera cambiar algo, se hace una copia de ella
   CounterState copyWith({
     int? counter, // ? == opcinales
     int? transactionCount
-  }) => CounterState(
+  }) => CounterState( // devuelve una nueva instancia/ un nuevo objeto de CounterState con estas nuevas propiedades
     counter: counter ?? this.counter, // si no me mandan valor, usa el que aparece en CounterState por defecto
     transactionCount: transactionCount ?? this.transactionCount // idem
   );

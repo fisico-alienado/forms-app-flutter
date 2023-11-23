@@ -18,10 +18,16 @@ class CubitCounterScreen extends StatelessWidget {
 class _CubitCounterView extends StatelessWidget {
   const _CubitCounterView();
 
+  // Otra forma de tener centralizado el uso de la función CounterCubit.increaseBy()
+  void increaseCountBy(BuildContext context, [int value = 1]) {
+    context.read<CounterCubit>().increaseBy(value);
+  }
+
   @override
   Widget build(BuildContext context) {
 
-    //! Forma 2: Forma clásica de comunicar cambios en vez de utilizar el BlocBuilder<>: .watch() == estate pendiente del siguiente provider. 
+    //! Forma 2: Forma clásica como el gestor PROVIDER de comunicar cambios en vez de utilizar el BlocBuilder<>: .watch() == estate pendiente del siguiente provider. 
+    //? Lo malo es que el watch() con cada cambio del estado, como estamos utilizando el copyWith(), estamos emitiendo nuevos objetos (estados) y haciendo que se redibujen los widgets ineficientemente.
     final counterState = context.watch<CounterCubit>().state; //* Con .state le estamos diciendo que redibuje cada vez que haya un cambio
 
     return Scaffold(
@@ -33,7 +39,10 @@ class _CubitCounterView extends StatelessWidget {
         
         actions: [
           IconButton(
-            onPressed: () => {}, 
+            onPressed: () => {
+              //! Forma 1: Forma clásica como el gestor PROVIDER
+              context.read<CounterCubit>().reset()
+            }, 
             icon: const Icon(Icons.refresh_outlined)
           )
         ],
@@ -46,8 +55,9 @@ class _CubitCounterView extends StatelessWidget {
                 width: MediaQuery.of(context).size.width * 0.5, // FORMA DE SABER LAS DIMENSIONES DEL DISPOSITIVO MOVIL EN USO
                 child: Center(
                   child: BlocBuilder<CounterCubit, CounterState>(// ! Forma 1: Maneja los Widgets que contienen estados de Cubit o Bloc. CounterCubit() maneja el CounterState()
-                    // buildWhen: (previous, current) => current.counter != previous.counter,
+                    // buildWhen: (previous, current) => current.counter != previous.counter, // * forma de evitar que se redibuje el widget                    
                     builder: (context, state) {
+                      // print('el counter cambió!!); //* para comprobar si al darle a reset() se redibuja el widget
                       return Text('Counter value: ${state.counter}');
                     },
                   )
@@ -72,25 +82,40 @@ class _CubitCounterView extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           FloatingActionButton(
-            heroTag: '1',
+            heroTag: 'a',
             child: const Text('+3'),
-            onPressed: () => {},
+            onPressed: () => {
+              //! Forma 1: Forma clásica como el gestor PROVIDER
+              context.read<CounterCubit>().increaseBy(3)
+              // Forma con funcion
+              // increaseCountBy(context, 3);
+            },
           ),
           
           const SizedBox(height: 10,),
     
           FloatingActionButton(
-            heroTag: '2',
+            heroTag: 'b',
             child: const Text('+2'),
-            onPressed: () => {},
+            onPressed: () => {
+              //! Forma 1: Forma clásica como el gestor PROVIDER
+              context.read<CounterCubit>().increaseBy(2)
+              // Forma con funcion
+              // increaseCountBy(context, 2);
+            },
           ),
     
           const SizedBox(height: 10,),
     
           FloatingActionButton(
-            heroTag: '3',
+            heroTag: 'c',
             child: const Text('+1'),
-            onPressed: () => {},
+            onPressed: () => {
+              //! Forma 1: Forma clásica como el gestor PROVIDER
+              context.read<CounterCubit>().increaseBy(1)
+              // Forma con funcion
+              // increaseCountBy(context);
+            },
           ),
     
         ],
