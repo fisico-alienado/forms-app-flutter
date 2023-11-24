@@ -19,7 +19,7 @@ class HomeScreen extends StatelessWidget {
 
           ListTile(
             title: const Text('Bloc'), // ! Los gestores de estado Bloc se utilizan para manejar ESTADOS COMPLEJOS.
-            subtitle: const Text('Gestor de estado complejo'),
+            subtitle: const Text('Gestor de estado compuesto'),
             trailing: const Icon(Icons.arrow_forward_ios_rounded),
             onTap: () => {context.push('/bloc')},
           ),
