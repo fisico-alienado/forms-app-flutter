@@ -28,7 +28,7 @@ class _CubitCounterView extends StatelessWidget {
 
     //! Forma 2: Forma clásica como el gestor PROVIDER de comunicar cambios en vez de utilizar el BlocBuilder<>: .watch() == estate pendiente del siguiente provider. 
     //? Lo malo es que el watch() con cada cambio del estado, como estamos utilizando el copyWith(), estamos emitiendo nuevos objetos (estados) y haciendo que se redibujen los widgets ineficientemente.
-    final counterState = context.watch<CounterCubit>().state; //* Con .state le estamos diciendo que redibuje cada vez que haya un cambio
+    // final counterState = context.watch<CounterCubit>().state; //* Con .state le estamos diciendo que redibuje cada vez que haya un cambio
 
     return Scaffold(
       appBar: AppBar(
@@ -40,7 +40,7 @@ class _CubitCounterView extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () => {
-              //! Forma 1: Forma clásica como el gestor PROVIDER
+              //! Forma 2: Forma clásica como el gestor PROVIDER
               context.read<CounterCubit>().reset()
             }, 
             icon: const Icon(Icons.refresh_outlined)
@@ -70,7 +70,12 @@ class _CubitCounterView extends StatelessWidget {
                   children: [
                     const Text('Número de veces que el contador ha cambiado de estado:', textAlign: TextAlign.center),
                     const SizedBox(height: 10,),
-                    Text('${counterState.transactionCount}')
+                    // ! Forma 2
+                    // Text('${counterState.transactionCount}')
+                    //! Forma 3: si solo quiero estar pendiente de un Cubit o un BLoC, podemos seleccionar uno entero
+                    context.select((CounterCubit value) {
+                      return Text('${value.state.transactionCount}');
+                    })
                   ]
                 )
               )
@@ -85,7 +90,6 @@ class _CubitCounterView extends StatelessWidget {
             heroTag: 'a',
             child: const Text('+3'),
             onPressed: () => {
-              //! Forma 1: Forma clásica como el gestor PROVIDER
               context.read<CounterCubit>().increaseBy(3)
               // Forma con funcion
               // increaseCountBy(context, 3);
@@ -98,7 +102,6 @@ class _CubitCounterView extends StatelessWidget {
             heroTag: 'b',
             child: const Text('+2'),
             onPressed: () => {
-              //! Forma 1: Forma clásica como el gestor PROVIDER
               context.read<CounterCubit>().increaseBy(2)
               // Forma con funcion
               // increaseCountBy(context, 2);
@@ -111,7 +114,6 @@ class _CubitCounterView extends StatelessWidget {
             heroTag: 'c',
             child: const Text('+1'),
             onPressed: () => {
-              //! Forma 1: Forma clásica como el gestor PROVIDER
               context.read<CounterCubit>().increaseBy(1)
               // Forma con funcion
               // increaseCountBy(context);

@@ -1,3 +1,4 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'counter_state.dart'; //! Indica que este archivo y 'counter_state.dart' son un mismo archivo DIVIDIDO EN VARIAS PARTES
@@ -11,7 +12,7 @@ part 'counter_state.dart'; //! Indica que este archivo y 'counter_state.dart' so
 // * CounterCubit() maneja el CounterState() a través de Cubit<>
 
 class CounterCubit extends Cubit<CounterState> {
-  CounterCubit() : super(CounterState( counter: 5)); //* Estamos obligados a crear un constructor que invoque/inicialice la clase padre de la que heredamos
+  CounterCubit() : super(const CounterState( counter: 0)); //* Estamos obligados a crear un constructor que invoque/inicialice la clase padre de la que heredamos
   // State = Estado = new CounterState(); --> Estamos creando una instancia de AppTheme
 
   void increaseBy( int value ) {
