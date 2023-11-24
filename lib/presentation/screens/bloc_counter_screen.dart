@@ -19,7 +19,10 @@ class _BlocCounterView extends StatelessWidget {
   const _BlocCounterView();
 
   void increaseCountBy(BuildContext context, [int value = 1]){
-    context.read<CounterBloc>().add(CounterIncreased(value)); //! Forma de disparar el evento -> .add(evento)
+    //* Forma valida donde es el widget el que dispara el evento
+    // context.read<CounterBloc>().add(CounterIncreased(value)); //! Forma de disparar el evento -> .add(evento)
+    //* Forma donde el evento lo disparamos desde el CounterBloc
+    context.read<CounterBloc>().increaseBy(value);
   }
 
   @override
@@ -29,7 +32,10 @@ class _BlocCounterView extends StatelessWidget {
         title: const Text('BLoC Counter'),
         actions: [
           IconButton(
-            onPressed: () => {context.read<CounterBloc>().add(CounterReset())}, 
+            //* Forma valida donde es el widget el que dispara el evento
+            // onPressed: () => {context.read<CounterBloc>().add(CounterReset())},
+            //* Forma donde el evento lo disparamos desde el CounterBloc
+            onPressed: () => {context.read<CounterBloc>().reset()},
             icon: const Icon(Icons.refresh_outlined)
           )
         ],

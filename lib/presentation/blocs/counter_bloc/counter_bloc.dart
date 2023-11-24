@@ -5,10 +5,11 @@ part 'counter_event.dart';
 part 'counter_state.dart';
 
 // ! Informacion en los archivos de Cubit y son comparables entre sí, para no repetir información.
+// ! CounterBloc() maneja el CounterState y CounterEvent a través de Bloc<>
 class CounterBloc extends Bloc<CounterEvent, CounterState> {
   CounterBloc() : super(const CounterState()) {
-    
-    //* Manejador / Handler de un CounterEvent
+
+    //! Manejador / Handler de un CounterEvent
     on<CounterIncreased>((event, emit) => _onCounterIncreased(event, emit));
     // Como los argumentos son los mismos que se envian, se sobreentiende y tambien seria valido mandarlos por referencia de la siguiente manera
     // on<CounterIncreased>(_onCounterIncreased);
@@ -28,6 +29,15 @@ class CounterBloc extends Bloc<CounterEvent, CounterState> {
       counter: event.value,
       // transactionCount: state.transactionCount + 1 // no contamos como cambio de estado el reset
     ));
+  }
+
+  //! Forma de disparar el evento -> .add(evento). Podemos centralizar aqui cuándo se disparan los eventos para no tener que hacerlo desde los widgets
+  void increaseBy(int value){
+    add(CounterIncreased(value));
+  }
+  
+  void reset() {
+    add(CounterReset());
   }
 
 }
