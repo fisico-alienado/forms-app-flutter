@@ -29,7 +29,7 @@ class _BlocCounterView extends StatelessWidget {
         title: const Text('BLoC Counter'),
         actions: [
           IconButton(
-            onPressed: () => {}, 
+            onPressed: () => {context.read<CounterBloc>().add(CounterReset())}, 
             icon: const Icon(Icons.refresh_outlined)
           )
         ],
@@ -41,7 +41,12 @@ class _BlocCounterView extends StatelessWidget {
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.5, // FORMA DE SABER LAS DIMENSIONES DEL DISPOSITIVO MOVIL EN USO
                 child: Center(
-                  child: Text('Counter value: 5')
+                  child: BlocBuilder<CounterBloc, CounterState>(
+                    builder: (context, state) {
+                      // print('el counter cambió!!); //* para comprobar si al darle a reset() se redibuja el widget
+                      return Text('Counter value: ${state.counter}');
+                    },
+                  )
                 )
               ),
               const SizedBox(height: 30,),
