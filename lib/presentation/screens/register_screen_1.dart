@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:forms_bloc_app/presentation/widgets/widgets.dart';
 
 
 // ! Formulario tipo 1: Aproximación tradicional con Stateful (Forms, TextFormField + Keys)
@@ -21,32 +22,52 @@ class _RegisterView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea( // WIDGET DE FLUTTER QUE PROTEGE AUTOMATICAMENTE LAS ZONAS DE ARRIBA Y ABAJO DE MOVILES CON isla dinamica o botones
+    return const SafeArea( // WIDGET DE FLUTTER QUE PROTEGE AUTOMATICAMENTE LAS ZONAS DE ARRIBA Y ABAJO DE MOVILES CON isla dinamica o botones
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
+        padding: EdgeInsets.symmetric(horizontal: 10),
         child: SingleChildScrollView( // ! Para evitar errores de overflow de contenido y permitir hacer scroll del contenido
           child: Column(
             children: [
-              const FlutterLogo(size: 100,),
+              FlutterLogo(size: 100,),
 
-              TextFormField(),
-              TextFormField(),
-              TextFormField(),
+              _RegisterForm(),
 
-              const SizedBox(height: 20,),
-              
-              FilledButton.tonalIcon(
-                onPressed: (){}, 
-                icon: const Icon(Icons.save),
-                label: const Text('Crear usuario'),
-              ),
-
-              const SizedBox(height: 20,),
+              SizedBox(height: 20,),
 
             ]
           ),
         ),
       ),
     );
+  }
+}
+
+class _RegisterForm extends StatelessWidget {
+  const _RegisterForm();
+
+  @override
+  Widget build(BuildContext context) {
+    return Form(
+      child: Column(
+        children: [
+
+          CustomTextFormField(),
+          const SizedBox(height: 10,),
+          CustomTextFormField(),
+          const SizedBox(height: 10,),
+          CustomTextFormField(),
+
+          const SizedBox(height: 20,),
+          
+          FilledButton.tonalIcon(
+            onPressed: (){}, 
+            icon: const Icon(Icons.save),
+            label: const Text('Crear usuario'),
+          ),
+        ],
+      ),
+    );
+    
+
   }
 }
