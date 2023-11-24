@@ -9,7 +9,7 @@ class CubitCounterScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     // ! Es como el MultiProvider() de la Yes_no_app, tenemos que envolver con el CubitBloc todos aquellos widgets que queramos que tengan acceso al cubit en cuestión.
     return BlocProvider(
-      create: ( _ ) => CounterCubit(), // devuelve una instancia/objeto del CounterCubit() y le de acceso a esa instancia al widget child.
+      create: ( _ ) => CounterCubit(), //! devuelve una instancia/objeto del CounterCubit() y le de acceso a esa instancia al widget child.
       child: const _CubitCounterView(),
     );
   }
@@ -73,9 +73,7 @@ class _CubitCounterView extends StatelessWidget {
                     // ! Forma 2
                     // Text('${counterState.transactionCount}')
                     //! Forma 3: si solo quiero estar pendiente de un Cubit o un BLoC, podemos seleccionar uno entero
-                    context.select((CounterCubit value) {
-                      return Text('${value.state.transactionCount}');
-                    })
+                    context.select((CounterCubit counterCubit) => Text('${counterCubit.state.transactionCount}'))
                   ]
                 )
               )

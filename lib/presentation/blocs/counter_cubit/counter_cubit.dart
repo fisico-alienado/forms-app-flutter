@@ -10,7 +10,6 @@ part 'counter_state.dart'; //! Indica que este archivo y 'counter_state.dart' so
 
 // ! Donde la clase 'A' va a controlar el estado de la clase 'B'. Además en ambos casos, la clase B tiene que inicializarse con 'A(): super(B())'.
 // * CounterCubit() maneja el CounterState() a través de Cubit<>
-
 class CounterCubit extends Cubit<CounterState> {
   CounterCubit() : super(const CounterState( counter: 0)); //* Estamos obligados a crear un constructor que invoque/inicialice la clase padre de la que heredamos
   // State = Estado = new CounterState(); --> Estamos creando una instancia de AppTheme
