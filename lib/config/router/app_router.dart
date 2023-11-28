@@ -20,6 +20,11 @@ final appRouter = GoRouter(
     ),
 
     GoRoute(
+      path: '/new-user-0',
+      builder: (context, state) => const RegisterScreenCero(),
+    ),
+
+    GoRoute(
       path: '/new-user',
       builder: (context, state) => const RegisterScreen(),
     ),

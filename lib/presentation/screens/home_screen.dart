@@ -30,6 +30,13 @@ class HomeScreen extends StatelessWidget {
           ),
 
           ListTile(
+            title: const Text('Nuevo usuario 0'),
+            subtitle: const Text('Cascarón de formulario con TextFormField() personalizable'),
+            trailing: const Icon(Icons.arrow_forward_ios_rounded),
+            onTap: () => {context.push('/new-user-0')},
+          ),
+
+          ListTile(
             title: const Text('Nuevo usuario'),
             subtitle: const Text('Formulario tradicional Stateful'),
             trailing: const Icon(Icons.arrow_forward_ios_rounded),
