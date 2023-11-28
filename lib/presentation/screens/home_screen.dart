@@ -37,14 +37,14 @@ class HomeScreen extends StatelessWidget {
           ),
 
           ListTile(
-            title: const Text('Nuevo usuario'),
+            title: const Text('Nuevo usuario 2'),
             subtitle: const Text('Formulario con gestor de estado Cubit'),
             trailing: const Icon(Icons.arrow_forward_ios_rounded),
             onTap: () => {context.push('/new-user-2')},
           ),
 
           ListTile(
-            title: const Text('Nuevo usuario'),
+            title: const Text('Nuevo usuario 3'),
             subtitle: const Text('Formulario con gestor de estado Cubit + Data Input Fields personalizados'),
             trailing: const Icon(Icons.arrow_forward_ios_rounded),
             onTap: () => {context.push('/new-user-3')},

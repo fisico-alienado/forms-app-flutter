@@ -66,7 +66,7 @@ class _RegisterFormState extends State<_RegisterForm> {
           CustomTextFormField(
             label: 'Nombre de usuario',
             onChanged: (value) => username = value, //! podria ponerse para validar en tiempo real: _formKey.currentState?.validate(); o algo similar
-            validator: (value) {
+            validator: (value) { //! La validación se la estamos delegando a los widgets
               if(value == null || value.isEmpty) return 'Campo requerido';
               if(value.trim().isEmpty ) return 'Campo requerido';
               if(value.length < 6) return 'Más de 6 letras';
@@ -77,7 +77,7 @@ class _RegisterFormState extends State<_RegisterForm> {
           CustomTextFormField(
             label: 'Correo electrónico',
             onChanged: (value) => email = value,
-            validator: (value) {
+            validator: (value) { //! La validación se la estamos delegando a los widgets
               if(value == null || value.isEmpty) return 'Campo requerido';
               if(value.trim().isEmpty ) return 'Campo requerido';
               final emailRegExp = RegExp( //! Expresión regular VALIDA PARA VALIDAR CORREOS ELECTRONICOS EN PRODUCCION EN LA VIDA REAL
@@ -93,7 +93,7 @@ class _RegisterFormState extends State<_RegisterForm> {
             label: 'Contraseña',
             obscureText: true,
             onChanged: (value) => password = value,
-            validator: (value) {
+            validator: (value) { //! La validación se la estamos delegando a los widgets
               if(value == null || value.isEmpty) return 'Campo requerido';
               if(value.trim().isEmpty ) return 'Campo requerido';
               if(value.length < 6) return 'Más de 6 letras';
@@ -112,13 +112,12 @@ class _RegisterFormState extends State<_RegisterForm> {
               // print('$username, $email, $password'); //* para ver en la consola para debuggear
               //! Aqui es donde un GESTOR DE ESTADO llamaría a la función POST() para que gestione los datos con el servidor, BBDD, etc
             }, 
+            // onPressed: null, //! Para deshabilitar el botón
             icon: const Icon(Icons.save),
             label: const Text('Crear usuario'),
           ),
         ],
       ),
     );
-    
-
   }
 }

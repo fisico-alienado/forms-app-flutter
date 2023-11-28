@@ -9,7 +9,7 @@ class RegisterScreenTres extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Nuevo Usuario'),
+        title: const Text('Nuevo Usuario 3'),
       ),
       body: const _RegisterView(),
     );
@@ -67,13 +67,12 @@ class _RegisterForm extends StatelessWidget {
           
           FilledButton.tonalIcon(
             onPressed: (){}, 
+            // onPressed: null, //! Para deshabilitar el botón
             icon: const Icon(Icons.save),
             label: const Text('Crear usuario'),
           ),
         ],
       ),
     );
-    
-
   }
 }

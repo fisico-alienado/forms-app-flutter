@@ -8,7 +8,7 @@ class RegisterCubit extends Cubit<RegisterFormState> {
   //* State = Estado = new RegisterFormState(); --> Estamos creando una instancia
 
   void onSubmit() {
-    print('Submit: $state'); // Para debuggear y ver los estados
+    print('Cubit submit: $state'); // Para debuggear y ver los estados
   }
 
   void usernameChanged (String value) {
