@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:forms_bloc_app/presentation/widgets/widgets.dart';
 
-// ! Formulario tipo 3: Aproximación con gestor de estado (BLoC en este caso, pero podría ser cualquiera) y Data Input Fields personalizados
+// ! Formulario tipo 3: Aproximación con gestor de estado (Cubits al ser un pequeño formulario, pero podría ser con BLoC) y Data Input Fields personalizados
 class RegisterScreenTres extends StatelessWidget {
   const RegisterScreenTres({super.key});
 

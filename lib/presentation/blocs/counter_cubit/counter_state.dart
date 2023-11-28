@@ -27,7 +27,7 @@ class CounterState extends Equatable {
     this.transactionCount = 0
   }); 
 
-  // ! Es una forma de hacer una copia de clases (del CounterState actual en este caso)
+  //! Es una forma de hacer una copia de clases (del CounterState actual en este caso) y EMITIR NUEVOS ESTADOS
   //! De esta manera podemos mantener la clase (CounterState) INMUTABLE y, cuando se quiera cambiar algo, se hace una copia de ella
   CounterState copyWith({
     int? counter, // ? == opcinales

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:forms_bloc_app/presentation/widgets/widgets.dart';
 
-// ! Formulario tipo 2: Aproximación con gestor de estado (BLoC en este caso, pero podría ser cualquiera)
+// ! Formulario tipo 2: Aproximación con gestor de estado (Cubits al ser un pequeño formulario, pero podría ser con BLoC)
 class RegisterScreenDos extends StatelessWidget {
   const RegisterScreenDos({super.key});
 

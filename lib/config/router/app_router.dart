@@ -24,5 +24,15 @@ final appRouter = GoRouter(
       builder: (context, state) => const RegisterScreen(),
     ),
 
+    GoRoute(
+      path: '/new-user-2',
+      builder: (context, state) => const RegisterScreenDos(),
+    ),
+
+    GoRoute(
+      path: '/new-user-3',
+      builder: (context, state) => const RegisterScreenTres(),
+    ),
+
   ]
 );
