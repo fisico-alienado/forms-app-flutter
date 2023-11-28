@@ -1,0 +1,13 @@
+------------- Formz --------------
+
+Es un paquete que ayuda a crear y validar los formularios, permitiendo tener centralizadas las validaciones y tipos especificos de datos en un formulario.
+https://pub.dev/packages/formz
+Es especialmente útil para:
+
+  - Muchos campos de validación
+  - Reutilización de los campos de datos en distintos formularios de la aplicación (por ejemplo, si queremos utilizar el mismo campo de email y sus validaciones en dos o más sitios de la app)
+  - Mantenimiento
+
+Para ello, en nuestro gestor de estado, los campos de datos del formulario (username, email, password, etc) van a dejar de ser simples Strings para ser OBJETOS, controlados por el paquete Formz.
+
+Debería ir colocado en 'Infrastructure' o en 'Domain' (depende de si lo consideramos reglas de negocio o no)
