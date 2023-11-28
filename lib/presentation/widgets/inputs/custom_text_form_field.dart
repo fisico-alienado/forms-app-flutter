@@ -40,10 +40,10 @@ class CustomTextFormField extends StatelessWidget {
       //   if(value.isEmpty ) return 'Campo es requerido';
       //   if(value.trim().isEmpty ) return 'Campo es requerido';
 
-      //   return null; //! null safety
+      //   return null; // null safety
       // },
-      onChanged: onChanged, // El mismo valor que emite es el que va a mandar en la función se difina
-      validator: validator, // El mismo valor que emite es el que va a mandar en la función se difina
+      onChanged: onChanged, // El mismo valor que emite es el que va a mandar en la función que se difina
+      validator: validator, // El mismo valor que emite es el que va a mandar en la función que se difina
       obscureText: obscureText, //* son los puntitos que ocultan el texto que se utilizan en los campos de contraseñas
       decoration: InputDecoration(
         enabledBorder: border,
